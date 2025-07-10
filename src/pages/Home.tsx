@@ -1,5 +1,7 @@
 import BlogList from "../components/Home/BlogList"
 import Header from "../components/Home/Header"
+import NewsLetter from "../components/Home/NewsLetter"
+import Footer from "../components/Layouts/Footer"
 import Navbar from "../components/Layouts/Navbar"
 
 
@@ -9,6 +11,8 @@ const Home = () => {
 <Navbar/>
 <Header/>
 <BlogList/>
+<NewsLetter/>
+<Footer/>
     </>
   )
 }

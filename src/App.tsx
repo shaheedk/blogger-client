@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import Blogs from "./pages/Blogs"
+import Blog from "./pages/Blog"
 
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/blog/:id" element={<Blogs/>}/>
+        <Route path="/blog/:id" element={<Blog/>}/>
 
       </Routes>
     </div>
