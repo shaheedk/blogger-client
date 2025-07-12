@@ -1,4 +1,5 @@
-export type BlogTypes= {
+
+export type BlogTypes = {
   _id: string;
   title: string;
   description: string;
@@ -9,4 +10,9 @@ export type BlogTypes= {
   __v: number;
   isPublished: boolean;
   subTitle: string;
+};
+export type BlogTableItemProps = {
+  blog: BlogTypes;
+  index: number;
+  fetchBlogs: () => void | Promise<void>;
 };
