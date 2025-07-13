@@ -7,7 +7,7 @@ import Dashboard from "./pages/Admin/Dashboard";
 import AddBlog from "./pages/Admin/AddBlog";
 import Comments from "./pages/Admin/Comments";
 import Login from "./components/Admin/Login";
-
+import 'quill/dist/quill.snow.css'
 const App = () => {
   return (
     <div>
