@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { assets, blog_data, comments_data } from "../assets/assets";
-import type { BlogTypes } from "../types/Blog";
+import type { BlogTypes } from "../types/BlogTypes";
 import Navbar from "../components/Layouts/Navbar";
 import moment from "moment";
 import type { Comments } from "../types/Comments";
 import Footer from "../components/Layouts/Footer";
 import Loader from "../components/Elaments/Loader";
+import { useAppContext } from "../context/AppContext";
 const Blog = () => {
   const { id } = useParams();
 
+  const {axios}=useAppContext()
+
   const [data, setData] = useState<BlogTypes | undefined>(undefined);
   const [comments, setComments] = useState<Comments[]>([]);
-
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
