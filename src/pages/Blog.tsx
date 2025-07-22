@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { assets, blog_data, comments_data } from "../assets/assets";
+import { assets } from "../assets/assets";
 import type { BlogTypes } from "../types/BlogTypes";
 import Navbar from "../components/Layouts/Navbar";
 import moment from "moment";
@@ -8,10 +8,13 @@ import type { Comments } from "../types/Comments";
 import Footer from "../components/Layouts/Footer";
 import Loader from "../components/Elaments/Loader";
 import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
+
+
+
 const Blog = () => {
   const { id } = useParams();
-
-  const {axios}=useAppContext()
+  const { axios } = useAppContext();
 
   const [data, setData] = useState<BlogTypes | undefined>(undefined);
   const [comments, setComments] = useState<Comments[]>([]);
@@ -19,22 +22,55 @@ const Blog = () => {
   const [content, setContent] = useState("");
 
   const fetchBlogData = async () => {
-    const data = blog_data.find((item) => item._id === id);
-    setData(data);
+    try {
+      const { data } = await axios.get(`/api/blog/${id}`);
+      data.success ? setData(data.blog) : toast.error(data.message);
+      setData(data.blog);
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message);
+    }
   };
 
   const fetchComments = async () => {
-    setComments(comments_data);
+    try {
+      const { data } = await axios.post("/api/blog/comments", { blogId: id });
+      if (data.success) {
+        setComments(data.comments);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+    }
   };
 
   const addComment = async (e: any) => {
     e.preventDefault();
+    try {
+      const { data } = await axios.post("/api/blog/add-comment", {
+        blog: id,
+        name,
+        content,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        setName("");
+        setContent("");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {}
   };
 
   useEffect(() => {
     fetchBlogData();
     fetchComments();
   }, []);
+  useEffect(() => {
+    console.log("Image URL:", data?.image); // <-- Add this
+  }, [data]);
 
   return data ? (
     <div className="relative">

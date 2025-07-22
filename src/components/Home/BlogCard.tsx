@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import type { Blog } from "../../types/Blog";
+import type { BlogTypes } from "../../types/BlogTypes";
 
 
 type BlogProps={
-    blog:Blog;
+    blog:BlogTypes;
 }
 
 const BlogCard = ({blog}:BlogProps) => {
     const {title,description,category,image,_id}=blog;
 const navigate=useNavigate()
   return (
-    <div onClick={()=>navigate(`/blog/${_id}`)} className="w-full rounded-lg overflow-hidden shadow hover:scale-105 hover:shadow-primary/25 duration-300 cursor-pointer">
-    <img src={image} alt="aspect-video" /> 
+    <div onClick={()=>navigate(`/blog/${_id}`)} className="w-full rounded-lg overflow-hidden shadow hover:scale-105 hover:shadow-primary/25 duration-300 cursor-pointer h-[350px]">
+   <img src={image} alt="aspect-video" className="w-full h-[150px] object-cover" />
+
     <span className="ml-5 mt-4 px-3 py-1 inline-block bg-primary/20 rounded-full text-primary text-xs" >{category}</span>
    <div className="p-5">
  <h5 className="mb-2 font-medium text-gray-900"> {title} </h5> 

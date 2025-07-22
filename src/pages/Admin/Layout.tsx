@@ -1,12 +1,17 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import Sidbar from "../../components/Admin/Sidbar";
+import { useAppContext } from "../../context/AppContext";
 
 function Layout() {
-  const navigate = useNavigate();
 
+
+  const {axios,setToken,navigate}=useAppContext()
   const logout = () => {
-    navigate("/");
+localStorage.removeItem('token')
+axios.defaults.headers.common['Authorization']=null
+setToken(null)
+navigate('/')
   };
 
   return (

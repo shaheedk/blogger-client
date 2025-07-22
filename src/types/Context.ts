@@ -1,5 +1,5 @@
 // types/Context.ts
-import type { ReactNode, Dispatch, SetStateAction } from "react";
+import type { ReactNode } from "react";
 import type { AxiosInstance } from "axios";
 import type { NavigateFunction } from "react-router-dom";
 
@@ -7,14 +7,14 @@ import type { NavigateFunction } from "react-router-dom";
 export interface AppProviderProps {
   children: ReactNode;
 }
-
-
+import type { BlogTypes } from "./BlogTypes";
 export interface AppContextType {
   axios: AxiosInstance;
   navigate: NavigateFunction;
   token: string | null;
-  setToken: Dispatch<SetStateAction<string | null>>;
-  blogs: any[]; 
-  setBlogs: Dispatch<SetStateAction<any[]>>; 
-  setInput: Dispatch<SetStateAction<string>>;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
+  blogs: BlogTypes[];
+  setBlogs: React.Dispatch<React.SetStateAction<BlogTypes[]>>;
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
 }

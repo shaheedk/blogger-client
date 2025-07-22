@@ -3,6 +3,7 @@ import type { AppContextType, AppProviderProps } from "../types/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import type{ BlogTypes } from "../types/BlogTypes";
 
 
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL
@@ -12,8 +13,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
     const navigate=useNavigate()
 
-    const [token,setToken]=useState<string|null>(null)
-    const [blogs,setBlogs]=useState([])
+    const [token,setToken]=useState<string|null>('')
+    const [blogs,setBlogs]=useState<BlogTypes[]>([])
     const [input,setInput]=useState("")
 
 const fetchBlogs=async()=>{
@@ -39,7 +40,7 @@ if(token){
 }
 },[])
 
-  const value = {
+  const value:AppContextType = {
     axios,navigate,token,setToken,blogs,setBlogs,input,setInput
   };
 

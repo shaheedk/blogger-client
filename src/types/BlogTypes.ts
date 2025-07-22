@@ -1,18 +1,18 @@
-
-export type BlogTypes = {
+export interface BlogTypes {
   _id: string;
   title: string;
+  subTitle: string;
   description: string;
   category: string;
-  image: string;
+    
   createdAt: string;
   updatedAt: string;
-  __v: number;
+  image?: string;
   isPublished: boolean;
-  subTitle: string;
-};
+}
+
 export type BlogTableItemProps = {
   blog: BlogTypes;
   index: number;
-  fetchBlogs: () => void | Promise<void>;
+  fetchBlogs: () => Promise<void>;
 };

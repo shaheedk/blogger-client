@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { setInput, input } = useAppContext();
+  const { setInput,input } = useAppContext();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
