@@ -6,7 +6,7 @@ import Navbar from "../components/Layouts/Navbar";
 import moment from "moment";
 import type { Comments } from "../types/Comments";
 import Footer from "../components/Layouts/Footer";
-import Loader from "../components/Elaments/Loader";
+import Loader from "../components/ui/Loader";
 import { useAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 
@@ -98,7 +98,7 @@ const Blog = () => {
         <img src={data.image} alt="" className="rounded-3xl mb-5" />
 
         <div
-          className="rich-text max-w-3xl mx-auto"
+          className="rich-text max-w-3xl mx-auto"                                                                                     
           dangerouslySetInnerHTML={{ __html: data.description }}
         ></div>
         {/* Comments Section  */}
